@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema(
           "https://wendorin.b-cdn.net/wp-content/uploads/2020/01/web-logo.png",
       },
     
+      
     price: { type: Number, required: true },
     description: { type: String, required: true },
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
