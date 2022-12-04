@@ -12,18 +12,18 @@ const Products = () => {
   const token = useSelector((store) => store.token);
   const dispatch = useDispatch();
   useEffect(() => {
-    axios.get("http://localhost:8080/products").then((res) => {
-        console.log(res)
-      dispatch({ type: UPDATE_PRODUCTS, payload: res.data });
-    });
+    axios
+      .get("https://wendor-backend-production.up.railway.app/products")
+      .then((res) => {
+        console.log(res);
+        dispatch({ type: UPDATE_PRODUCTS, payload: res.data });
+      });
   }, []);
   return (
-   
-
     <Grid
       templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(4, 1fr)"]}
       gap={6}
-      >
+    >
       {products.map((el) => {
         return (
           <GridItem key={el._id}>
@@ -32,8 +32,6 @@ const Products = () => {
         );
       })}
     </Grid>
-   
-     
   );
 };
 

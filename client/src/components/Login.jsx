@@ -26,7 +26,10 @@ const Login = () => {
   const handleOtp = (otp) => {
     setOtpspinner(true);
     axios
-      .post("http://localhost:8080/login/verify", { phone_number: phone, otp })
+      .post("https://wendor-backend-production.up.railway.app/login/verify", {
+        phone_number: phone,
+        otp,
+      })
       .then((res) => {
         dispatch({ type: LOGIN, payload: res.data.token });
         setOtpspinner(false);
@@ -36,8 +39,8 @@ const Login = () => {
           status: "success",
           isClosable: true,
         });
-        console.log(res)
-        
+        console.log(res);
+
         setTimeout(() => {
           navigate("/");
         }, 2000);
@@ -54,7 +57,7 @@ const Login = () => {
       });
   };
   return (
-    <Box margin={"auto"}> 
+    <Box margin={"auto"}>
       <FormControl isRequired>
         <FormLabel>Mobile number</FormLabel>
         <Input
@@ -76,7 +79,9 @@ const Login = () => {
           }
           setSendOtpSpinner(true);
           axios
-            .post("http://localhost:8080/login", { phone_number: mobile })
+            .post("https://wendor-backend-production.up.railway.app/login", {
+              phone_number: mobile,
+            })
             .then((res) => {
               setSendOtpSpinner(false);
               setShowotp(true);

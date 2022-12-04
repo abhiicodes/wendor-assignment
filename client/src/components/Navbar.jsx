@@ -4,7 +4,6 @@ import {
   ButtonGroup,
   Flex,
   Heading,
-
   Spacer,
   useDisclosure,
   useToast,
@@ -19,7 +18,6 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,7 +29,7 @@ const Navbar = () => {
 
   const handleForm = (data) => {
     axios
-      .post("http://localhost:8080/products", data, {
+      .post("https://wendor-backend-production.up.railway.app/products", data, {
         headers: {
           authorization: "Bearer " + token,
         },
@@ -45,7 +43,7 @@ const Navbar = () => {
           isClosable: true,
         });
         axios
-          .get("http://localhost:8080/products")
+          .get("https://wendor-backend-production.up.railway.app/products")
           .then((res) => {
             console.log(res);
             dispatch({ type: UPDATE_PRODUCTS, payload: res.data });
